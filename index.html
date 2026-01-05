@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Academic Student Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+}
+
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: #ffffff;
+  padding: 30px;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 6px;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: #1a3c7c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.portal {
+  display: none;
+}
+
+.topbar {
+  background: #1a3c7c;
+  color: white;
+  padding: 10px 20px;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #ffffff;
+  min-height: calc(100vh - 50px);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar a:hover {
+  background: #f0f2f5;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #e9edf3;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h2>Student Login</h2>
+    <input type="password" id="enroll" placeholder="Enrollment Number">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div id="error"></div>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div class="portal" id="portal">
+  <div class="topbar">Academic Student Portal</div>
+
+  <div class="container">
+    <div class="sidebar">
+      <a onclick="show('dashboard')">Dashboard</a>
+      <a onclick="show('attendance')">Attendance</a>
+      <a onclick="show('fees')">Fees / Scholarship</a>
+      <a onclick="show('performance')">Academic Performance</a>
+      <a onclick="show('personal')">Personal Details / ID</a>
+      <a onclick="show('mentor')">Faculty Mentor</a>
+    </div>
+
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div id="dashboard">
+        <h3>Foundation Level Courses (First Year)</h3>
+        <table>
+          <tr><th>Course Name</th><th>Code</th><th>Credits</th></tr>
+          <tr><td>Mathematics for Data Science 1</td><td>BSMA1001</td><td>4</td></tr>
+          <tr><td>Statistics for Data Science 1</td><td>BSMA1002</td><td>4</td></tr>
+          <tr><td>Computational Thinking</td><td>BSCS1001</td><td>4</td></tr>
+          <tr><td>English 1</td><td>BSHS1001</td><td>4</td></tr>
+          <tr><td>Mathematics for Data Science 2</td><td>BSMA1003</td><td>4</td></tr>
+          <tr><td>Statistics for Data Science 2</td><td>BSMA1004</td><td>4</td></tr>
+          <tr><td>Programming in Python</td><td>BSCS1002</td><td>4</td></tr>
+          <tr><td>English 2</td><td>BSHS1002</td><td>4</td></tr>
+        </table>
+        <b>Total Courses: 8 | Total Credits: 32</b>
+
+        <h3>Current Semester</h3>
+        <table>
+          <tr><th>Course</th><th>Code</th><th>Credits</th></tr>
+          <tr><td>Mathematics for Data Science 1</td><td>BSMA1001</td><td>4</td></tr>
+          <tr><td>Statistics for Data Science 1</td><td>BSMA1002</td><td>4</td></tr>
+          <tr><td>Computational Thinking</td><td>BSCS1001</td><td>4</td></tr>
+          <tr><td>English 1</td><td>BSHS1001</td><td>4</td></tr>
+        </table>
+        <b>Total Courses: 4 | Total Credits: 16</b>
+
+        <p><b>Instructions:</b> All core content is delivered via pre-recorded lectures and assignments released weekly. Content stays accessible, so you can watch them at your convenience any time during that term.</p>
+       <p><b>Assignments:</b>Assignments for that week go live with the videos.Submission within the deadline is required. Weekly assignments — must meet minimum score standards to be eligible to sit for bigger assessments. If minimum required performance in assignments/quizzes isn’t met, you may not be allowed to take the final exam for that course.</p>
+       <p><b>Attendance:</b> There is no daily attendance marking like traditional live classes. Submission of weekly assignments for a course is taken as an indicator of engagement/attendance. The lectures would be sent weekly and the duration of lectures would be around 45mins to 1 hour.</p>
+        <p><b>First lectures available:</b> 12 January 2026</p>
+      </div>
+
+      <!-- OTHER SECTIONS -->
+      <div id="attendance" style="display:none;">
+        <h3>Attendance</h3>
+        <p>Lectures and assignments are not provided yet.</p>
+      </div>
+
+      <div id="fees" style="display:none;">
+        <h3>Scholarship Status</h3>
+        <table>
+          <tr><th>Percentile</th><th>Waiver</th></tr>
+          <tr><td>Top 1%</td><td>8 Semesters</td></tr>
+          <tr><td>Top 2%</td><td>7 Semesters</td></tr>
+          <tr><td>Top 3%</td><td>6 Semesters</td></tr>
+          <tr><td>Top 4%</td><td>5 Semesters</td></tr>
+          <tr><td>Top 5%</td><td>4 Semesters</td></tr>
+        </table>
+        <p><b>Awarded:</b> Your Consolidated Rank which is 987/33,680 and Percentile position - Top 3%. This places you in the merit bracket eligible for tuition-fee scholarships. The scholarship awarded to you based on your consolidated percentile is (6-semester Tuition Fee waiver) which is equivalent to (3 years of tuition-free study).</p>
+      </div>
+
+      <div id="performance" style="display:none;">
+        <h3>Academic Performance</h3>
+        <table>
+          <tr><th>Assessment</th><th>Score</th></tr>
+          <tr><td>Quiz 1</td><td>48 / 50</td></tr>
+          <tr><td>Quiz 2</td><td>48 / 50</td></tr>
+        </table>
+      </div>
+
+      <div id="personal" style="display:none;">
+        <h3>Personal Details</h3>
+        <p><b>Name:</b> Priyansh Ketan Majithia</p>
+        <p><b>Gender:</b> Male</p>
+        <p><b>Address:</b> 806 Hetvee Tower, opposite sachin tower, Satellite, Ahmedabad</p>
+      </div>
+
+      <div id="mentor" style="display:none;">
+        <h3>Faculty Mentor</h3>
+        <p><b>Prof. Aarvind Krishnan</b></p>
+        <p>Professor Aarvind Krishnan is a highly experienced academic and researcher with expertise in data science, mathematics and computer science. He will design couse content, deliver lectures, and ensure academic rigor while supporting student through structured learning resources and discussions.</p>
+      </div>
+
+      <div class="footer">
+        IIT-M Academic Student Portal — For Data science and applications students
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function login() {
+  if (
+    document.getElementById("enroll").value === "IITM-DS2026-30987" &&
+    document.getElementById("pass").value === "DS@PRIYANSH@2026"
+  ) {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("portal").style.display = "block";
+  } else {
+    document.getElementById("error").innerText = "Invalid credentials";
+  }
+}
+
+function show(id) {
+  document.querySelectorAll(".content > div").forEach(d => d.style.display = "none");
+  document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>
